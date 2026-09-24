@@ -20,6 +20,21 @@ export interface MetricFigure {
 
 export const experiences: ExperienceEntry[] = [
   {
+    id: "exp-elearning-dev",
+    hash: "e7b419a",
+    role: "E-learning Developer",
+    company: "Walkerton Clean Water Centre",
+    location: "Walkerton, Ontario",
+    period: "June 2026 – September 2026",
+    startYear: "2026",
+    endYear: "2026",
+    bullets: [
+      "Designed and developed interactive e-learning modules using instructional design principles, multimedia content, and authoring tools to create engaging learning experiences.",
+      "Collaborated with subject matter experts and cross-functional teams to analyse training requirements, develop course content, and implement revisions based on stakeholder feedback.",
+      "Tested, maintained, and updated e-learning content to ensure functionality, accessibility, and compatibility across Learning Management Systems (LMS) and multiple devices.",
+    ],
+  },
+  {
     id: "exp-qa-analyst",
     hash: "8f2a1c0",
     role: "IT Quality Analyst (Tech)",
@@ -55,31 +70,31 @@ export const experiences: ExperienceEntry[] = [
 
 export const metrics: MetricFigure[] = [
   {
-    id: "metric-tests",
-    value: 500,
-    suffix: "+",
-    label: "TEST CASES EXECUTED / MO",
-    sublabel: "Rigorous manual & automated validation",
+    id: "metric-lms",
+    value: 100,
+    suffix: "%",
+    label: "LMS COMPLIANCE & ACCESSIBILITY",
+    sublabel: "Cross-device responsive & WCAG standards",
   },
   {
     id: "metric-automation",
     value: 40,
     suffix: "%",
-    label: "MANUAL TESTING TIME REDUCED",
-    sublabel: "Via automated regression suites",
+    label: "EFFICIENCY GAIN VIA DESIGN SYSTEMS",
+    sublabel: "Modular reusable component architectures",
   },
   {
     id: "metric-prep",
     value: 50,
     suffix: "%",
-    label: "ENV PREPARATION ACCELERATION",
-    sublabel: "Standardized test env pipelines",
+    label: "WORKFLOW & ITERATION SPEEDUP",
+    sublabel: "Figma-to-code rapid prototyping cycles",
   },
   {
     id: "metric-defects",
     value: 30,
     suffix: "%",
-    label: "FEWER POST-RELEASE DEFECTS",
-    sublabel: "Elevated release stability & quality",
+    label: "REDUCED USER FRICTION & DEFECTS",
+    sublabel: "Elevated UX satisfaction & release stability",
   },
 ];

@@ -31,13 +31,13 @@ const TABS: TabDef[] = [
   { id: 'overview', num: '01', shortLabel: 'Overview', fullLabel: 'Project Overview' },
   { id: 'research', num: '02', shortLabel: 'Research', fullLabel: 'Research & Personas' },
   { id: 'problem-flows', num: '03', shortLabel: 'Problem & Flows', fullLabel: 'Problem & Flows' },
-  { id: 'wireframes', num: '04', shortLabel: 'Wireframes', fullLabel: 'Prototyping & Specs' },
+  { id: 'wireframes', num: '04', shortLabel: 'Prototyping & Specs', fullLabel: 'Prototyping & Specs' },
   { id: 'testing', num: '05', shortLabel: 'Testing', fullLabel: 'Usability Testing' },
   { id: 'development', num: '06', shortLabel: 'Code', fullLabel: 'Front-End Code' },
   { id: 'reflection', num: '07', shortLabel: 'Reflection', fullLabel: 'Reflection & Brief' },
 ];
 
-interface WireframeScreen {
+interface SpecScreen {
   id: string;
   fig: string;
   title: string;
@@ -49,17 +49,17 @@ interface WireframeScreen {
   highlights: string[];
 }
 
-const WIREFRAME_SCREENS: WireframeScreen[] = [
+const LOFI_SCREENS: SpecScreen[] = [
   {
-    id: 'wf-home',
+    id: 'lofi-home',
     fig: 'FIG. 04A',
     title: 'Storefront Homepage & Product Discovery Wireframe',
-    badge: 'HOMEPAGE // DISCOVERY',
+    badge: 'LO-FI // STOREFRONT WIREFRAME',
     src: './images/home-uship.png',
-    alt: 'Uship Homepage Wireframe & Discovery Layout',
+    alt: 'Uship Homepage Lo-Fi Wireframe Layout',
     dimensions: '2160 × 2535 PX',
     description:
-      'High-fidelity wireframe establishing primary navigation landmarks, persistent global search, prominent promotional hero container, 4-column quick-category tiles, and dynamic product showcase grid with direct cart action triggers.',
+      'Low-fidelity structural wireframe establishing primary navigation landmarks, persistent global search, prominent promotional hero container, 4-column quick-category tiles, and dynamic product showcase grid with placeholder zoning.',
     highlights: [
       'Sticky header with high-contrast global search bar',
       'Hero promotional spotlight with direct "Shop Now" callout',
@@ -68,15 +68,15 @@ const WIREFRAME_SCREENS: WireframeScreen[] = [
     ],
   },
   {
-    id: 'wf-product',
+    id: 'lofi-product',
     fig: 'FIG. 04B',
-    title: 'Product Catalog Grid & Filtered Navigation Spec',
-    badge: 'CATALOG // PRODUCT FEED',
+    title: 'Product Catalog Grid & Filtered Navigation Wireframe',
+    badge: 'LO-FI // CATALOG FEED WIREFRAME',
     src: './images/product-uship.png',
-    alt: 'Uship Product Catalog and Grid Interface Wireframe',
+    alt: 'Uship Product Catalog Lo-Fi Wireframe',
     dimensions: '2160 × 1815 PX',
     description:
-      'Structured catalog layout optimizing browsing efficiency. Standardized aspect-ratio card containers with consistent pricing hierarchy, badges, and quick-add actions designed to reduce friction during multi-item inspection.',
+      'Structured wireframe catalog layout optimizing browsing efficiency. Standardized aspect-ratio card containers with placeholder geometry, pricing hierarchy, and quick-add action zoning.',
     highlights: [
       'Standardized product card geometry & visual rhythm',
       'High-legibility pricing typography and discount tags',
@@ -85,36 +85,107 @@ const WIREFRAME_SCREENS: WireframeScreen[] = [
     ],
   },
   {
-    id: 'wf-login',
+    id: 'lofi-login',
     fig: 'FIG. 04C',
-    title: 'User Authentication & Account Sign-In Flow',
-    badge: 'AUTH // SIGN-IN',
+    title: 'User Authentication & Account Sign-In Wireframe',
+    badge: 'LO-FI // AUTHENTICATION WIREFRAME',
     src: './images/login-uship.png',
-    alt: 'Uship User Authentication Login Wireframe',
+    alt: 'Uship User Authentication Login Lo-Fi Wireframe',
     dimensions: '2160 × 1455 PX',
     description:
-      'Focused authentication modal/view designed to reduce checkout drop-off. Minimalist form fields with immediate client-side validation cues, password visibility toggle, and rapid recovery shortcuts.',
+      'Focused authentication wireframe designed to reduce checkout drop-off. Minimalist form fields with immediate client-side validation cues, password visibility toggle, and rapid recovery shortcuts.',
     highlights: [
       'Focused single-purpose card container with high contrast ratios',
       'Real-time field validation cues and accessible form labels',
-      'Password visibility toggle and swift password recovery shortcuts',
+      'Password visibility toggle and swift recovery shortcuts',
       'Direct toggle pathway for new user registration',
     ],
   },
   {
-    id: 'wf-register',
+    id: 'lofi-register',
     fig: 'FIG. 04D',
     title: 'Onboarding & Customer Registration Wireframe',
-    badge: 'AUTH // ONBOARDING',
+    badge: 'LO-FI // ONBOARDING WIREFRAME',
     src: './images/register-uship.png',
-    alt: 'Uship Customer Registration Form Wireframe',
+    alt: 'Uship Customer Registration Form Lo-Fi Wireframe',
     dimensions: '2160 × 1695 PX',
     description:
-      'Clean onboarding architecture gathering essential customer data without cognitive fatigue. Streamlined input progression ensuring rapid progression to shopping within seconds.',
+      'Clean onboarding architecture wireframe gathering essential customer data without cognitive fatigue. Streamlined input progression ensuring rapid progression to shopping within seconds.',
     highlights: [
       'Low-friction onboarding layout with clear helper text',
       'Accessible input labels with native keyboard support',
       'Explicit terms of service and privacy guarantees',
+      'One-click transition to authenticated shopping state',
+    ],
+  },
+];
+
+const HIFI_SCREENS: SpecScreen[] = [
+  {
+    id: 'hifi-home',
+    fig: 'FIG. 04E',
+    title: 'Storefront Homepage & Product Discovery Prototype',
+    badge: 'HI-FI // STOREFRONT PROTOTYPE',
+    src: './images/hifi-home-uship.png',
+    alt: 'Uship Homepage High-Fidelity Interactive Prototype Screen',
+    dimensions: '1247 × 761 PX',
+    description:
+      'High-fidelity interactive storefront establishing polished brand visual identity, live categorical hero banners (Computer & Accessories, Beauty Picks, Video Games, Lifestyle), and dynamic product grid with live stock and discount tagging.',
+    highlights: [
+      'Polished visual identity with rich color palette & modern iconography',
+      'Hero promotional spotlight with direct "Shop Now" callout',
+      '4-column categorical discovery quadrants with colored visual banners',
+      'Fluid responsive product grid with live MRP discount percentage badges',
+    ],
+  },
+  {
+    id: 'hifi-product',
+    fig: 'FIG. 04F',
+    title: 'Product Catalog Grid & Filtered Navigation Prototype',
+    badge: 'HI-FI // CATALOG FEED PROTOTYPE',
+    src: './images/hifi-product-uship.png',
+    alt: 'Uship Product Catalog High-Fidelity Interactive Prototype Screen',
+    dimensions: '1201 × 817 PX',
+    description:
+      'High-fidelity product catalog with live sorting dropdown (All, Category, Price), active item count indicator ("Total Products: 8 items"), standardized product card geometry, and direct "Add to cart +" interaction triggers.',
+    highlights: [
+      'Interactive sort filter with instant category reordering',
+      'Product card geometry with high-resolution imagery and discount badges',
+      'Prominent "Add to cart +" micro-interaction triggers',
+      'High-legibility pricing typography with crossed-out MRP comparisons',
+    ],
+  },
+  {
+    id: 'hifi-login',
+    fig: 'FIG. 04G',
+    title: 'User Authentication & Account Sign-In Prototype',
+    badge: 'HI-FI // AUTHENTICATION PROTOTYPE',
+    src: './images/login-uship.png',
+    alt: 'Uship User Authentication Login High-Fidelity Prototype Screen',
+    dimensions: '2160 × 1455 PX',
+    description:
+      'Focused authentication modal and view designed to reduce checkout drop-off. Dual-column layout for New Customer onboarding and Registered Customer sign-in with instant field validation cues and password toggle.',
+    highlights: [
+      'Dual-column layout: New Customer value proposition vs. Registered Customer sign-in',
+      'Real-time field validation cues and accessible form labels',
+      'Password input with swift recovery shortcuts',
+      'Direct toggle pathway for new user registration',
+    ],
+  },
+  {
+    id: 'hifi-register',
+    fig: 'FIG. 04H',
+    title: 'Onboarding & Customer Registration Prototype',
+    badge: 'HI-FI // ONBOARDING PROTOTYPE',
+    src: './images/register-uship.png',
+    alt: 'Uship Customer Registration Form High-Fidelity Prototype Screen',
+    dimensions: '2160 × 1695 PX',
+    description:
+      'Clean customer onboarding architecture gathering essential user information (First Name, Last Name, Email, Role Selection, and Credentials) without cognitive fatigue.',
+    highlights: [
+      'Low-friction onboarding layout with clear helper text',
+      'Role selection dropdown with native keyboard navigation',
+      'Password confirmation verification states',
       'One-click transition to authenticated shopping state',
     ],
   },
@@ -131,44 +202,20 @@ interface PipelineStageDef {
 
 const PIPELINE_STAGES: PipelineStageDef[] = [
   {
-    id: '01',
+    id: 'lofi',
     num: '01',
-    label: '01 // IDEA & RESEARCH',
-    badge: 'STAGE 01',
-    title: 'Idea Discovery & User Research',
-    summary: 'Synthesized 3 shopper personas (Sarah, Daniel, Maria) to identify friction points and polarized shopping intents.',
+    label: '01 // LO-FI WIREFRAMES',
+    badge: 'LO-FI WIREFRAMES · 4 SCREENS',
+    title: 'Low-Fidelity Structural Wireframes & Spatial Layout',
+    summary: 'Architectural layout zoning, information hierarchy, and user journey wireframes with grayscale wireframe screens.',
   },
   {
-    id: '02',
+    id: 'hifi',
     num: '02',
-    label: '02 // SKETCHES & BLUEPRINT',
-    badge: 'STAGE 02',
-    title: 'Information Architecture Blueprint',
-    summary: 'Low-fidelity layout mapping defining top-level sticky search, promotional hero, categorical discovery, and customer hub.',
-  },
-  {
-    id: '03',
-    num: '03',
-    label: '03 // LO-FI WIREFRAMES',
-    badge: 'STAGE 03 · ACTIVE',
-    title: 'Wireframe Prototypes & UI Specifications',
-    summary: 'Four high-resolution wireframe screens establishing core user flows: Storefront, Product Feed, Authentication, and Onboarding.',
-  },
-  {
-    id: '04',
-    num: '04',
-    label: '04 // HI-FI PROTOTYPE',
-    badge: 'STAGE 04',
-    title: 'Visual Polish & Interaction Prototypes',
-    summary: 'Applied responsive breakpoints, high-contrast typography, hover state micro-interactions, and cart feedback states.',
-  },
-  {
-    id: '05',
-    num: '05',
-    label: '05 // PRODUCTION CODE',
-    badge: 'STAGE 05',
-    title: 'Production Engineering & Deployment',
-    summary: 'Engineered into semantic HTML5, pure responsive CSS3, and modular Vanilla JavaScript, hosted live on GitHub Pages.',
+    label: '02 // HI-FI PROTOTYPE',
+    badge: 'HI-FI PROTOTYPE · 4 SCREENS',
+    title: 'High-Fidelity Interactive Prototype & Visual UI',
+    summary: 'Four production UI prototype screens: Storefront Homepage, Product Catalog, Authentication Modal, and Onboarding Registration.',
   },
 ];
 
@@ -179,8 +226,11 @@ export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<string>('overview');
   const [viewMode, setViewMode] = useState<'tabs' | 'all'>('tabs');
-  const [activeWireframeIdx, setActiveWireframeIdx] = useState<number | null>(null);
-  const [pipelineStage, setPipelineStage] = useState<string>('03');
+  const [pipelineStage, setPipelineStage] = useState<'lofi' | 'hifi' | 'all'>('lofi');
+  const [lightboxState, setLightboxState] = useState<{
+    type: 'lofi' | 'hifi';
+    index: number;
+  } | null>(null);
   const contentTopRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -189,27 +239,38 @@ export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (activeWireframeIdx === null) return;
+      if (!lightboxState) return;
+      const currentList = lightboxState.type === 'hifi' ? HIFI_SCREENS : LOFI_SCREENS;
       if (e.key === 'Escape') {
-        setActiveWireframeIdx(null);
+        setLightboxState(null);
       } else if (e.key === 'ArrowLeft') {
-        setActiveWireframeIdx((prev) =>
-          prev !== null ? (prev > 0 ? prev - 1 : WIREFRAME_SCREENS.length - 1) : null
+        setLightboxState((prev) =>
+          prev
+            ? {
+                ...prev,
+                index: prev.index > 0 ? prev.index - 1 : currentList.length - 1,
+              }
+            : null
         );
       } else if (e.key === 'ArrowRight') {
-        setActiveWireframeIdx((prev) =>
-          prev !== null ? (prev < WIREFRAME_SCREENS.length - 1 ? prev + 1 : 0) : null
+        setLightboxState((prev) =>
+          prev
+            ? {
+                ...prev,
+                index: prev.index < currentList.length - 1 ? prev.index + 1 : 0,
+              }
+            : null
         );
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeWireframeIdx]);
+  }, [lightboxState]);
 
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
     if (contentTopRef.current) {
-      const yOffset = -120;
+      const yOffset = -20;
       const y = contentTopRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
     }
@@ -221,8 +282,8 @@ export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
 
   return (
     <div className="min-h-screen bg-canvas text-primary selection:bg-vermilion selection:text-white pb-20">
-      {/* Sticky Spec Top Header */}
-      <header className="sticky top-0 z-40 w-full bg-canvas/95 backdrop-none border-b border-hairline transition-colors">
+      {/* Spec Top Header (Non-sticky) */}
+      <header className="w-full bg-canvas border-b border-hairline transition-colors">
         <div className="max-w-spec mx-auto px-4 sm:px-8 h-14 flex items-center justify-between">
           <button
             type="button"
@@ -326,9 +387,9 @@ export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
         {/* Anchor mark for smooth tab scrolling */}
         <div ref={contentTopRef} />
 
-        {/* Interactive Sticky Tab Bar: Solves boring vertical scroll on mobile! */}
+        {/* Case Study Modules Navigation (Non-sticky) */}
         <nav
-          className="sticky top-14 z-30 -mx-4 sm:-mx-8 px-4 sm:px-8 py-2.5 bg-canvas/95 border-b border-hairline mb-8"
+          className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-2.5 bg-canvas border-b border-hairline mb-8"
           aria-label="Case Study Modules Navigation"
         >
           <div className="flex items-center justify-between gap-3">
@@ -594,68 +655,77 @@ export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
             </section>
           )}
 
-          {/* TAB 04: Wireframes & Blueprint */}
+          {/* TAB 04: Prototyping & Specs */}
           {(viewMode === 'all' || activeTab === 'wireframes') && (
             <section className="space-y-8 animate-in fade-in duration-200">
               <div className="flex items-center space-x-3 pb-3 border-b border-hairline font-mono text-xs">
                 <span className="text-vermilion font-bold">04 //</span>
                 <span className="text-primary font-semibold tracking-mono uppercase">
-                  PROTOTYPING &amp; WIREFRAME SPECIFICATIONS
+                  PROTOTYPING &amp; SPECS
                 </span>
               </div>
 
-              {/* Design Progression Pipeline: Interactive Stepper with 03 LO-FI WIREFRAMES as Default */}
+              {/* Inside Tab Stages: 01 Lo-Fi Wireframes & 02 Hi-Fi Prototype */}
               <div className="p-5 border border-hairline bg-surface/30 space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-hairline font-mono text-xs text-muted uppercase gap-2">
                   <div className="flex items-center space-x-2">
-                    <span className="text-vermilion font-bold">DESIGN PROGRESSION PIPELINE</span>
+                    <span className="text-vermilion font-bold">STAGE 04 ARCHITECTURE</span>
                     <span>//</span>
-                    <span>LIFECYCLE</span>
+                    <span>PROTOTYPING &amp; SPECIFICATIONS</span>
                   </div>
                   <div className="flex items-center space-x-3 text-[11px]">
-                    <span className="text-secondary">SELECT STAGE TO INSPECT:</span>
+                    <span className="text-secondary">ACTIVE STAGE:</span>
                     <button
                       type="button"
-                      onClick={() => setPipelineStage(pipelineStage === 'all' ? '03' : 'all')}
+                      onClick={() => setPipelineStage(pipelineStage === 'all' ? 'lofi' : 'all')}
                       className="px-2 py-0.5 border border-hairline hover:border-vermilion text-vermilion hover:underline text-[10px]"
                     >
-                      {pipelineStage === 'all' ? '[ SHOW STAGE 03 ONLY ]' : '[ VIEW ALL 5 STAGES ]'}
+                      {pipelineStage === 'all' ? '[ SHOW SINGLE STAGE ]' : '[ VIEW BOTH (LO-FI & HI-FI) ]'}
                     </button>
                   </div>
                 </div>
 
-                {/* Pipeline Stage Buttons */}
+                {/* Stage Buttons */}
                 <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 font-mono text-xs">
-                  {PIPELINE_STAGES.map((stage, idx) => {
+                  {PIPELINE_STAGES.map((stage) => {
                     const isSelected = pipelineStage === stage.id;
                     return (
-                      <React.Fragment key={stage.id}>
-                        <button
-                          type="button"
-                          onClick={() => setPipelineStage(stage.id)}
-                          className={`px-3 py-1.5 border transition-all flex items-center space-x-1.5 ${
-                            isSelected
-                              ? 'border-vermilion bg-canvas text-vermilion font-semibold ring-1 ring-vermilion/50 shadow-sm'
-                              : 'border-hairline bg-canvas/60 text-secondary hover:text-primary hover:border-hairline-bright'
-                          }`}
-                          title={`Switch to ${stage.title}`}
-                        >
-                          {isSelected && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-vermilion animate-pulse" />
-                          )}
-                          <span>{stage.label}</span>
-                          {stage.id === '03' && (
-                            <span className="text-[10px] px-1 py-0.2 bg-vermilion/10 text-vermilion border border-vermilion/30 ml-1">
-                              IMAGES
-                            </span>
-                          )}
-                        </button>
-                        {idx < PIPELINE_STAGES.length - 1 && (
-                          <span className="text-muted text-xs hidden md:inline">→</span>
+                      <button
+                        key={stage.id}
+                        type="button"
+                        onClick={() => setPipelineStage(stage.id as 'lofi' | 'hifi')}
+                        className={`px-3.5 py-2 border transition-all flex items-center space-x-2 ${
+                          isSelected
+                            ? 'border-vermilion bg-canvas text-vermilion font-semibold ring-1 ring-vermilion/50 shadow-sm'
+                            : 'border-hairline bg-canvas/60 text-secondary hover:text-primary hover:border-hairline-bright'
+                        }`}
+                        title={`Switch to ${stage.title}`}
+                      >
+                        {isSelected && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-vermilion animate-pulse" />
                         )}
-                      </React.Fragment>
+                        <span>{stage.label}</span>
+                        <span className="text-[10px] px-1.5 py-0.5 bg-vermilion/10 text-vermilion border border-vermilion/30 ml-1">
+                          {stage.id === 'lofi' ? '4 WIREFRAMES' : '4 PROTOTYPES'}
+                        </span>
+                      </button>
                     );
                   })}
+
+                  <button
+                    type="button"
+                    onClick={() => setPipelineStage('all')}
+                    className={`px-3.5 py-2 border transition-all flex items-center space-x-1.5 ${
+                      pipelineStage === 'all'
+                        ? 'border-vermilion bg-canvas text-vermilion font-semibold ring-1 ring-vermilion/50 shadow-sm'
+                        : 'border-hairline bg-canvas/60 text-secondary hover:text-primary hover:border-hairline-bright'
+                    }`}
+                  >
+                    {pipelineStage === 'all' && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-vermilion animate-pulse" />
+                    )}
+                    <span>ALL // VIEW BOTH</span>
+                  </button>
                 </div>
 
                 {/* Active Stage Metadata Banner */}
@@ -676,100 +746,33 @@ export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
                 )}
               </div>
 
-              {/* STAGE 01: Idea & Research Artifact */}
-              {(pipelineStage === 'all' || pipelineStage === '01') && (
-                <div className="p-6 border border-hairline bg-surface/20 space-y-4 font-mono">
-                  <div className="flex items-center justify-between pb-3 border-b border-hairline text-xs">
-                    <span className="text-vermilion font-bold">01 // IDEA &amp; RESEARCH SYNTHESIS</span>
-                    <span className="text-muted text-[11px]">[STAGE 01 ARTIFACT]</span>
-                  </div>
-                  <p className="text-sm text-secondary font-sans leading-relaxed">
-                    Identified that modern e-commerce users suffer from excessive promotional clutter and complex mega-menus. Formulated the core mission: balance quick targeted searches with intuitive, organized product browsing across desktop and mobile.
-                  </p>
-                  <div className="flex items-center justify-between pt-3 border-t border-hairline/60 text-xs">
-                    <span className="text-muted text-[11px]">PERSONAS: SARAH (STUDENT) · DANIEL (IT) · MARIA (BUSINESS)</span>
-                    <button
-                      type="button"
-                      onClick={() => setPipelineStage('03')}
-                      className="text-vermilion hover:underline flex items-center space-x-1"
-                    >
-                      <span>Jump to 03 // Lo-Fi Wireframes (Images)</span>
-                      <span>→</span>
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* STAGE 02: Sketches & Structural Blueprint Spec */}
-              {(pipelineStage === 'all' || pipelineStage === '02') && (
-                <div className="border border-hairline bg-canvas p-5 sm:p-7 space-y-4">
-                  <div className="flex items-center justify-between pb-3 border-b border-hairline font-mono text-[11px] text-muted uppercase tracking-mono">
-                    <span className="text-vermilion font-bold">FIG. 04E // STRUCTURAL INFORMATION ARCHITECTURE</span>
-                    <span>[STAGE 02 BLUEPRINT SPEC]</span>
-                  </div>
-
-                  <div className="space-y-3 font-mono text-xs text-secondary">
-                    <div className="p-3 border border-dashed border-hairline bg-surface/30 flex items-center justify-between">
-                      <span>[HEADER] Logo / Brand · Global Top Search Bar · Quick Account &amp; Cart State</span>
-                      <span className="text-vermilion text-[10px]">STICKY</span>
-                    </div>
-                    <div className="p-4 border border-hairline bg-surface/20 text-center text-primary font-semibold">
-                      [HERO BANNER] Clear Visual Value Proposition &amp; Primary "Shop Now" Direct CTA
-                    </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-[11px]">
-                      <div className="p-2.5 border border-hairline bg-surface/40">[CAT 01] Tech</div>
-                      <div className="p-2.5 border border-hairline bg-surface/40">[CAT 02] Apparel</div>
-                      <div className="p-2.5 border border-hairline bg-surface/40">[CAT 03] Living</div>
-                      <div className="p-2.5 border border-hairline bg-surface/40">[CAT 04] Essentials</div>
-                    </div>
-                    <div className="p-3.5 border border-hairline bg-surface/20 text-center">
-                      [RECENTLY ADDED PRODUCTS] Dynamic Responsive Product Grid with Pricing &amp; Cart Action
-                    </div>
-                    <div className="p-3 border border-hairline bg-surface/30 flex items-center justify-between">
-                      <span>[CUSTOMER SUPPORT &amp; FOOTER] Transparent Returns, FAQ, Policy, Newsletter</span>
-                      <span className="text-muted text-[10px]">FOOTER HUB</span>
-                    </div>
-                  </div>
-
-                  <div className="pt-3 border-t border-hairline/60 flex items-center justify-end font-mono text-xs">
-                    <button
-                      type="button"
-                      onClick={() => setPipelineStage('03')}
-                      className="text-vermilion hover:underline flex items-center space-x-1 font-medium"
-                    >
-                      <span>Proceed to 03 // Lo-Fi Wireframes (Images)</span>
-                      <span>→</span>
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* STAGE 03: Wireframe Prototyping Showcase (DEFAULT ACTIVE!) */}
-              {(pipelineStage === 'all' || pipelineStage === '03') && (
+              {/* SECTION 1: LO-FI WIREFRAMES (ORIGINAL WIREFRAME SCREENS: HOME, PRODUCT, LOGIN, REGISTER) */}
+              {(pipelineStage === 'all' || pipelineStage === 'lofi') && (
                 <div className="space-y-6">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-hairline font-mono text-xs gap-2">
                     <div className="flex items-center space-x-2">
-                      <span className="text-vermilion font-bold">STAGE 03 //</span>
+                      <span className="text-vermilion font-bold">04.1 //</span>
                       <span className="text-primary font-semibold tracking-mono uppercase">
-                        LO-FI WIREFRAME PROTOTYPES &amp; UI SPECIFICATIONS
+                        LO-FI WIREFRAME SPECIFICATIONS &amp; SPATIAL LAYOUT
                       </span>
                     </div>
                     <div className="flex items-center space-x-3 text-muted text-[11px]">
-                      <span>4 HIGH-RES WIREFRAMES</span>
+                      <span>4 WIREFRAME BLUEPRINT SCREENS</span>
                       <span>·</span>
-                      <span className="text-vermilion font-medium">[ CLICK ANY SCREEN TO INSPECT SPEC ]</span>
+                      <span className="text-vermilion font-medium">[ CLICK ANY SCREEN TO OPEN LIGHTBOX ]</span>
                     </div>
                   </div>
 
+                  {/* Lo-Fi Screens Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {WIREFRAME_SCREENS.map((screen, idx) => (
+                    {LOFI_SCREENS.map((screen, idx) => (
                       <div
                         key={screen.id}
-                        onClick={() => setActiveWireframeIdx(idx)}
+                        onClick={() => setLightboxState({ type: 'lofi', index: idx })}
                         onKeyDown={(e) => {
                           if (e.key === 'Enter' || e.key === ' ') {
                             e.preventDefault();
-                            setActiveWireframeIdx(idx);
+                            setLightboxState({ type: 'lofi', index: idx });
                           }
                         }}
                         tabIndex={0}
@@ -799,11 +802,10 @@ export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
                             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                             loading="lazy"
                           />
-                          {/* Hover Overlay */}
                           <div className="absolute inset-0 bg-canvas/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
                             <div className="px-3 py-1.5 bg-canvas/90 border border-vermilion text-vermilion font-mono text-xs flex items-center space-x-2 shadow-lg">
                               <Maximize2 className="w-3.5 h-3.5" />
-                              <span className="font-semibold tracking-mono">INSPECT SPEC</span>
+                              <span className="font-semibold tracking-mono">INSPECT WIREFRAME</span>
                             </div>
                           </div>
                         </div>
@@ -843,51 +845,180 @@ export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
                 </div>
               )}
 
-              {/* STAGE 04: Hi-Fi Prototype Artifact */}
-              {(pipelineStage === 'all' || pipelineStage === '04') && (
-                <div className="p-6 border border-hairline bg-surface/20 space-y-4 font-mono">
-                  <div className="flex items-center justify-between pb-3 border-b border-hairline text-xs">
-                    <span className="text-vermilion font-bold">04 // HI-FI PROTOTYPE POLISH</span>
-                    <span className="text-muted text-[11px]">[STAGE 04 ARTIFACT]</span>
+              {/* SECTION 2: HI-FI PROTOTYPE (HIFI HOME, HIFI PRODUCT, LOGIN & REGISTER AS PER LOFI) */}
+              {(pipelineStage === 'all' || pipelineStage === 'hifi') && (
+                <div className="space-y-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-hairline font-mono text-xs gap-2">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-vermilion font-bold">04.2 //</span>
+                      <span className="text-primary font-semibold tracking-mono uppercase">
+                        HI-FI PROTOTYPE SCREENS &amp; INTERACTIVE UI
+                      </span>
+                    </div>
+                    <div className="flex items-center space-x-3 text-muted text-[11px]">
+                      <span>4 PRODUCTION UI SCREENS</span>
+                      <span>·</span>
+                      <span className="text-vermilion font-medium">[ CLICK ANY SCREEN TO OPEN LIGHTBOX ]</span>
+                    </div>
                   </div>
-                  <p className="text-sm text-secondary font-sans leading-relaxed">
-                    Transitioned from grayscale wireframes to interactive high-fidelity states: calibrated typography scales, 8pt spatial grid rhythm, vermilion interactive accents, and instant cart state updates with zero cognitive friction.
-                  </p>
-                  <div className="flex items-center justify-between pt-3 border-t border-hairline/60 text-xs">
-                    <span className="text-muted text-[11px]">INTERACTIONS: CART DRAWER · DYNAMIC SEARCH · QUICK AUTH</span>
-                    <button
-                      type="button"
-                      onClick={() => setPipelineStage('05')}
-                      className="text-vermilion hover:underline flex items-center space-x-1"
-                    >
-                      <span>Proceed to 05 // Production Code</span>
-                      <span>→</span>
-                    </button>
-                  </div>
-                </div>
-              )}
 
-              {/* STAGE 05: Production Code Artifact */}
-              {(pipelineStage === 'all' || pipelineStage === '05') && (
-                <div className="p-6 border border-hairline bg-surface/20 space-y-4 font-mono">
-                  <div className="flex items-center justify-between pb-3 border-b border-hairline text-xs">
-                    <span className="text-vermilion font-bold">05 // PRODUCTION CODE &amp; DEPLOYMENT</span>
-                    <span className="text-muted text-[11px]">[STAGE 05 ARTIFACT]</span>
+                  {/* Hi-Fi Screens Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {HIFI_SCREENS.map((screen, idx) => (
+                      <div
+                        key={screen.id}
+                        onClick={() => setLightboxState({ type: 'hifi', index: idx })}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            setLightboxState({ type: 'hifi', index: idx });
+                          }
+                        }}
+                        tabIndex={0}
+                        role="button"
+                        aria-label={`Inspect ${screen.title} prototype specification`}
+                        className="group border border-hairline hover:border-vermilion bg-surface/30 hover:bg-surface/50 transition-all p-4 space-y-4 cursor-pointer relative text-left focus:outline-none focus:ring-1 focus:ring-vermilion"
+                      >
+                        {/* Top Spec Card Bar */}
+                        <div className="flex items-center justify-between font-mono text-[11px] pb-2 border-b border-hairline">
+                          <div className="flex items-center space-x-2">
+                            <span className="text-vermilion font-bold">{screen.fig}</span>
+                            <span className="text-muted">//</span>
+                            <span className="text-primary font-medium uppercase tracking-mono">
+                              {screen.badge}
+                            </span>
+                          </div>
+                          <span className="text-[10px] text-muted px-1.5 py-0.5 border border-hairline bg-canvas">
+                            {screen.dimensions}
+                          </span>
+                        </div>
+
+                        {/* Image Thumbnail with Overlay Zoom Hint */}
+                        <div className="aspect-[16/10] overflow-hidden bg-surface-subtle border border-hairline relative">
+                          <img
+                            src={screen.src}
+                            alt={screen.alt}
+                            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                            loading="lazy"
+                          />
+                          {/* Hover Overlay */}
+                          <div className="absolute inset-0 bg-canvas/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
+                            <div className="px-3 py-1.5 bg-canvas/90 border border-vermilion text-vermilion font-mono text-xs flex items-center space-x-2 shadow-lg">
+                              <Maximize2 className="w-3.5 h-3.5" />
+                              <span className="font-semibold tracking-mono">INSPECT HI-FI SCREEN</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Text & Specification Breakdown */}
+                        <div className="space-y-2.5">
+                          <div className="flex items-start justify-between gap-2">
+                            <h4 className="text-sm font-semibold text-primary group-hover:text-vermilion transition-colors">
+                              {screen.title}
+                            </h4>
+                            <span className="text-muted group-hover:text-vermilion transition-colors flex-shrink-0 pt-0.5">
+                              <Maximize2 className="w-3.5 h-3.5" />
+                            </span>
+                          </div>
+
+                          <p className="text-xs text-secondary leading-relaxed">
+                            {screen.description}
+                          </p>
+
+                          <div className="pt-2 border-t border-hairline/60">
+                            <div className="text-[10px] font-mono text-muted uppercase mb-1.5">
+                              Key Prototype Specifications:
+                            </div>
+                            <ul className="space-y-1 text-xs font-mono text-secondary">
+                              {screen.highlights.map((h, hi) => (
+                                <li key={hi} className="flex items-start space-x-2">
+                                  <span className="text-vermilion font-bold">›</span>
+                                  <span className="text-primary">{h}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <p className="text-sm text-secondary font-sans leading-relaxed">
-                    Finalized production release engineered with semantic HTML5, clean CSS3 layouts (Grid &amp; Flexbox), and lightweight Vanilla JavaScript. Fully tested across mobile viewports and deployed live to GitHub Pages.
-                  </p>
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-hairline/60 text-xs">
-                    <span className="text-muted text-[11px]">STACK: HTML5 · CSS3 · VANILLA JS · GITHUB PAGES</span>
-                    <a
-                      href={ushipCaseStudy.metadata.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center space-x-1 text-vermilion hover:underline font-semibold"
-                    >
-                      <span>Launch Live GitHub Pages Deployment</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </a>
+
+                  {/* Hi-Fi Prototype Showcase Banner */}
+                  <div className="border border-hairline bg-surface/30 p-6 sm:p-8 space-y-6 mt-6">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-hairline">
+                      <div className="space-y-2">
+                        <div className="flex items-center space-x-2 font-mono text-xs text-vermilion font-semibold">
+                          <span className="w-2 h-2 rounded-full bg-vermilion animate-pulse" />
+                          <span>HIGH-FIDELITY INTERACTIVE PROTOTYPE</span>
+                        </div>
+                        <h3 className="text-xl sm:text-2xl font-medium text-primary tracking-tight">
+                          Uship E-Commerce Responsive Prototype
+                        </h3>
+                        <p className="text-sm text-secondary max-w-2xl leading-relaxed">
+                          Refined visual polish featuring an 8pt spatial grid, vermilion action accents, WCAG AA accessible contrast ratios, and real-time interaction states including animated cart drawer slide-outs and instant client-side validation.
+                        </p>
+                      </div>
+
+                      <div className="flex-shrink-0">
+                        <a
+                          href={ushipCaseStudy.metadata.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center space-x-2 px-5 py-2.5 bg-primary text-canvas font-mono text-xs font-semibold uppercase tracking-mono hover:bg-vermilion hover:text-white transition-all shadow-sm"
+                        >
+                          <span>Open Live Prototype</span>
+                          <ArrowUpRight className="w-4 h-4" />
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Hi-Fi Specifications Matrix */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+                      {/* Token 1 */}
+                      <div className="p-4 border border-hairline bg-canvas space-y-3">
+                        <div className="flex items-center justify-between border-b border-hairline pb-2">
+                          <span className="text-vermilion font-bold">SPEC 01 //</span>
+                          <span className="text-primary font-semibold">DESIGN SYSTEM &amp; TOKENS</span>
+                        </div>
+                        <p className="text-xs text-secondary leading-relaxed font-sans">
+                          Structured typography using Inter Tight with tight optical kerning for high readability. Vermilion (#e04316) CTA triggers for instant recognition and zero navigation friction.
+                        </p>
+                        <div className="pt-2 border-t border-hairline/60 flex items-center justify-between text-[11px] text-muted">
+                          <span>GRID: 8PT BASELINE</span>
+                          <span className="text-vermilion">WCAG AA</span>
+                        </div>
+                      </div>
+
+                      {/* Token 2 */}
+                      <div className="p-4 border border-hairline bg-canvas space-y-3">
+                        <div className="flex items-center justify-between border-b border-hairline pb-2">
+                          <span className="text-vermilion font-bold">SPEC 02 //</span>
+                          <span className="text-primary font-semibold">MICRO-INTERACTIONS</span>
+                        </div>
+                        <p className="text-xs text-secondary leading-relaxed font-sans">
+                          Slide-in cart drawer with live subtotal calculation, instant category filtering with zero page reload, password visibility toggle, and instant feedback toasts on checkout.
+                        </p>
+                        <div className="pt-2 border-t border-hairline/60 flex items-center justify-between text-[11px] text-muted">
+                          <span>DRAWER: ANIMATED</span>
+                          <span className="text-vermilion">ZERO RELOAD</span>
+                        </div>
+                      </div>
+
+                      {/* Token 3 */}
+                      <div className="p-4 border border-hairline bg-canvas space-y-3">
+                        <div className="flex items-center justify-between border-b border-hairline pb-2">
+                          <span className="text-vermilion font-bold">SPEC 03 //</span>
+                          <span className="text-primary font-semibold">RESPONSIVE VIEWPORTS</span>
+                        </div>
+                        <p className="text-xs text-secondary leading-relaxed font-sans">
+                          Calibrated breakpoints seamlessly adapting from ultra-wide 1440px desktop multi-column grids down to 375px mobile single-column touch layouts with 48px tap targets.
+                        </p>
+                        <div className="pt-2 border-t border-hairline/60 flex items-center justify-between text-[11px] text-muted">
+                          <span>BREAKPOINTS: 375PX — 1440PX</span>
+                          <span className="text-vermilion">FLUID</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
@@ -1116,134 +1247,154 @@ export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
         </section>
       </div>
 
-      {/* Full-Screen Wireframe Spec Lightbox Modal */}
-      {activeWireframeIdx !== null && WIREFRAME_SCREENS[activeWireframeIdx] && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={WIREFRAME_SCREENS[activeWireframeIdx].title}
-          className="fixed inset-0 z-50 bg-canvas/95 backdrop-blur-md flex flex-col justify-between overflow-hidden animate-in fade-in duration-200"
-          onClick={() => setActiveWireframeIdx(null)}
-        >
-          {/* Lightbox Top Header Bar */}
-          <div
-            className="w-full bg-surface/90 border-b border-hairline px-4 sm:px-8 py-3 flex items-center justify-between z-10 flex-shrink-0"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center space-x-3 font-mono text-xs">
-              <span className="text-vermilion font-bold">
-                {WIREFRAME_SCREENS[activeWireframeIdx].fig}
-              </span>
-              <span className="text-muted hidden sm:inline">//</span>
-              <span className="text-primary font-semibold truncate max-w-[240px] sm:max-w-md">
-                {WIREFRAME_SCREENS[activeWireframeIdx].title}
-              </span>
-              <span className="hidden md:inline px-2 py-0.5 text-[10px] bg-canvas border border-hairline text-secondary">
-                {WIREFRAME_SCREENS[activeWireframeIdx].dimensions}
-              </span>
-            </div>
+      {/* Full-Screen Spec Lightbox Modal (Works for both Lo-Fi Wireframes & Hi-Fi Prototype) */}
+      {lightboxState !== null && (
+        (() => {
+          const currentList = lightboxState.type === 'hifi' ? HIFI_SCREENS : LOFI_SCREENS;
+          const currentScreen = currentList[lightboxState.index];
+          if (!currentScreen) return null;
 
-            <div className="flex items-center space-x-3">
-              <span className="hidden sm:inline font-mono text-[11px] text-muted">
-                {activeWireframeIdx + 1} / {WIREFRAME_SCREENS.length} · [ESC TO CLOSE]
-              </span>
-              <button
-                type="button"
-                onClick={() => setActiveWireframeIdx(null)}
-                className="p-1.5 border border-hairline hover:border-vermilion text-secondary hover:text-primary transition-colors flex items-center space-x-1 font-mono text-xs"
-                title="Close modal (Esc)"
+          return (
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-label={currentScreen.title}
+              className="fixed inset-0 z-50 bg-canvas/95 backdrop-blur-md flex flex-col justify-between overflow-hidden animate-in fade-in duration-200"
+              onClick={() => setLightboxState(null)}
+            >
+              {/* Lightbox Top Header Bar */}
+              <div
+                className="w-full bg-surface/90 border-b border-hairline px-4 sm:px-8 py-3 flex items-center justify-between z-10 flex-shrink-0"
+                onClick={(e) => e.stopPropagation()}
               >
-                <X className="w-4 h-4 text-vermilion" />
-                <span className="hidden sm:inline">CLOSE</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Lightbox Viewport with Side Navigation */}
-          <div
-            className="flex-1 relative flex items-center justify-center p-3 sm:p-6 overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Previous Screen Button */}
-            <button
-              type="button"
-              onClick={() =>
-                setActiveWireframeIdx(
-                  activeWireframeIdx > 0 ? activeWireframeIdx - 1 : WIREFRAME_SCREENS.length - 1
-                )
-              }
-              className="absolute left-2 sm:left-6 z-20 p-2 sm:p-3 bg-surface/80 border border-hairline hover:border-vermilion text-primary hover:text-vermilion transition-all backdrop-blur-sm shadow-lg"
-              title="Previous Wireframe (Left Arrow)"
-              aria-label="Previous Wireframe"
-            >
-              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
-
-            {/* Main Image Container */}
-            <div className="max-h-[66vh] sm:max-h-[72vh] max-w-full overflow-auto border border-hairline bg-surface-subtle shadow-2xl p-1 sm:p-2 flex items-center justify-center">
-              <img
-                src={WIREFRAME_SCREENS[activeWireframeIdx].src}
-                alt={WIREFRAME_SCREENS[activeWireframeIdx].alt}
-                className="max-h-[62vh] sm:max-h-[68vh] w-auto object-contain select-none"
-              />
-            </div>
-
-            {/* Next Screen Button */}
-            <button
-              type="button"
-              onClick={() =>
-                setActiveWireframeIdx(
-                  activeWireframeIdx < WIREFRAME_SCREENS.length - 1 ? activeWireframeIdx + 1 : 0
-                )
-              }
-              className="absolute right-2 sm:right-6 z-20 p-2 sm:p-3 bg-surface/80 border border-hairline hover:border-vermilion text-primary hover:text-vermilion transition-all backdrop-blur-sm shadow-lg"
-              title="Next Wireframe (Right Arrow)"
-              aria-label="Next Wireframe"
-            >
-              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
-          </div>
-
-          {/* Lightbox Bottom Spec Bar */}
-          <div
-            className="w-full bg-surface/95 border-t border-hairline px-4 sm:px-8 py-3.5 z-10 flex-shrink-0"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="max-w-spec mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-mono text-xs">
-              <div className="space-y-1 max-w-3xl">
-                <div className="flex items-center space-x-2">
-                  <span className="text-vermilion font-bold text-[11px] uppercase tracking-mono">
-                    [{WIREFRAME_SCREENS[activeWireframeIdx].badge}]
+                <div className="flex items-center space-x-3 font-mono text-xs">
+                  <span className="text-vermilion font-bold">
+                    {currentScreen.fig}
                   </span>
-                  <span className="text-primary font-medium">
-                    {WIREFRAME_SCREENS[activeWireframeIdx].title}
+                  <span className="text-muted hidden sm:inline">//</span>
+                  <span className="text-primary font-semibold truncate max-w-[240px] sm:max-w-md">
+                    {currentScreen.title}
+                  </span>
+                  <span className="hidden md:inline px-2 py-0.5 text-[10px] bg-canvas border border-hairline text-secondary">
+                    {currentScreen.dimensions}
                   </span>
                 </div>
-                <p className="text-[11px] text-secondary leading-relaxed line-clamp-2 md:line-clamp-none">
-                  {WIREFRAME_SCREENS[activeWireframeIdx].description}
-                </p>
+
+                <div className="flex items-center space-x-3">
+                  <span className="hidden sm:inline font-mono text-[11px] text-muted">
+                    {lightboxState.index + 1} / {currentList.length} · [ESC TO CLOSE]
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setLightboxState(null)}
+                    className="p-1.5 border border-hairline hover:border-vermilion text-secondary hover:text-primary transition-colors flex items-center space-x-1 font-mono text-xs"
+                    title="Close modal (Esc)"
+                  >
+                    <X className="w-4 h-4 text-vermilion" />
+                    <span className="hidden sm:inline">CLOSE</span>
+                  </button>
+                </div>
               </div>
 
-              {/* Wireframe thumbnail selector */}
-              <div className="flex items-center space-x-2 flex-shrink-0 self-end md:self-auto">
-                {WIREFRAME_SCREENS.map((wf, idx) => (
-                  <button
-                    key={wf.id}
-                    type="button"
-                    onClick={() => setActiveWireframeIdx(idx)}
-                    className={`px-2 py-1 text-[10px] font-mono border transition-all ${
-                      idx === activeWireframeIdx
-                        ? 'border-vermilion bg-vermilion/10 text-vermilion font-semibold'
-                        : 'border-hairline text-muted hover:text-primary hover:border-hairline-bright bg-surface/40'
-                    }`}
-                  >
-                    0{idx + 1}
-                  </button>
-                ))}
+              {/* Lightbox Viewport with Side Navigation */}
+              <div
+                className="flex-1 relative flex items-center justify-center p-3 sm:p-6 overflow-hidden"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Previous Screen Button */}
+                <button
+                  type="button"
+                  onClick={() =>
+                    setLightboxState((prev) =>
+                      prev
+                        ? {
+                            ...prev,
+                            index: prev.index > 0 ? prev.index - 1 : currentList.length - 1,
+                          }
+                        : null
+                    )
+                  }
+                  className="absolute left-2 sm:left-6 z-20 p-2 sm:p-3 bg-surface/80 border border-hairline hover:border-vermilion text-primary hover:text-vermilion transition-all backdrop-blur-sm shadow-lg"
+                  title="Previous Screen (Left Arrow)"
+                  aria-label="Previous Screen"
+                >
+                  <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+
+                {/* Main Image Container */}
+                <div className="max-h-[66vh] sm:max-h-[72vh] max-w-full overflow-auto border border-hairline bg-surface-subtle shadow-2xl p-1 sm:p-2 flex items-center justify-center">
+                  <img
+                    src={currentScreen.src}
+                    alt={currentScreen.alt}
+                    className="max-h-[62vh] sm:max-h-[68vh] w-auto object-contain select-none"
+                  />
+                </div>
+
+                {/* Next Screen Button */}
+                <button
+                  type="button"
+                  onClick={() =>
+                    setLightboxState((prev) =>
+                      prev
+                        ? {
+                            ...prev,
+                            index: prev.index < currentList.length - 1 ? prev.index + 1 : 0,
+                          }
+                        : null
+                    )
+                  }
+                  className="absolute right-2 sm:right-6 z-20 p-2 sm:p-3 bg-surface/80 border border-hairline hover:border-vermilion text-primary hover:text-vermilion transition-all backdrop-blur-sm shadow-lg"
+                  title="Next Screen (Right Arrow)"
+                  aria-label="Next Screen"
+                >
+                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+              </div>
+
+              {/* Lightbox Bottom Spec Bar */}
+              <div
+                className="w-full bg-surface/95 border-t border-hairline px-4 sm:px-8 py-3.5 z-10 flex-shrink-0"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="max-w-spec mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-mono text-xs">
+                  <div className="space-y-1 max-w-3xl">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-vermilion font-bold text-[11px] uppercase tracking-mono">
+                        [{currentScreen.badge}]
+                      </span>
+                      <span className="text-primary font-medium">
+                        {currentScreen.title}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-secondary leading-relaxed line-clamp-2 md:line-clamp-none">
+                      {currentScreen.description}
+                    </p>
+                  </div>
+
+                  {/* Screen thumbnail selector */}
+                  <div className="flex items-center space-x-2 flex-shrink-0 self-end md:self-auto">
+                    {currentList.map((screen, idx) => (
+                      <button
+                        key={screen.id}
+                        type="button"
+                        onClick={() =>
+                          setLightboxState({ type: lightboxState.type, index: idx })
+                        }
+                        className={`px-2 py-1 text-[10px] font-mono border transition-all ${
+                          idx === lightboxState.index
+                            ? 'border-vermilion bg-vermilion/10 text-vermilion font-semibold'
+                            : 'border-hairline text-muted hover:text-primary hover:border-hairline-bright bg-surface/40'
+                        }`}
+                      >
+                        0{idx + 1}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          );
+        })()
       )}
     </div>
   );

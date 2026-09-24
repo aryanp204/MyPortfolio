@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { profile } from '@/data/profile';
 import { Sun, Moon, Command, Menu, X } from 'lucide-react';
 
 interface HeaderProps {
@@ -39,10 +38,10 @@ export const Header: React.FC<HeaderProps> = ({
   }, []);
 
   const navLinks = [
-    { id: 'hero', label: 'HOME', monoNum: '00' },
-    { id: 'about', label: 'ABOUT', monoNum: '01' },
-    { id: 'work', label: 'WORK', monoNum: '02' },
-    { id: 'contact', label: 'CONTACT', monoNum: '03' },
+    { id: 'hero', label: 'HOME' },
+    { id: 'about', label: 'ABOUT' },
+    { id: 'work', label: 'WORK' },
+    { id: 'contact', label: 'CONTACT' },
   ];
 
   const handleNavClick = (id: string, e: React.MouseEvent) => {
@@ -59,23 +58,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="sticky top-0 z-40 w-full bg-canvas/95 backdrop-none border-b border-hairline transition-colors duration-200">
       <div className="max-w-spec mx-auto px-4 sm:px-8 h-14 flex items-center justify-between">
-        {/* Wordmark Left */}
-        <a
-          href="#hero"
-          onClick={(e) => handleNavClick('hero', e)}
-          className="group flex items-center space-x-2 focus:outline-none"
-          aria-label="Aryan Patel - Return to top"
-        >
-          <span className="font-mono text-xs font-semibold text-vermilion">/</span>
-          <span className="font-mono text-sm tracking-tight font-medium text-primary group-hover:text-vermilion transition-colors">
-            {profile.shortName}
-          </span>
-          <span className="hidden sm:inline-block font-mono text-[10px] text-muted tracking-mono uppercase">
-            [SPEC.01]
-          </span>
-        </a>
-
-        {/* Center / Right Nav Items (Desktop) */}
+        {/* Desktop Nav Items */}
         <nav className="hidden md:flex items-center space-x-8" aria-label="Main Navigation">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
@@ -88,9 +71,6 @@ export const Header: React.FC<HeaderProps> = ({
                   isActive ? 'text-vermilion font-semibold' : 'text-secondary hover:text-primary'
                 }`}
               >
-                <span className={`text-[10px] ${isActive ? 'text-vermilion' : 'text-muted'}`}>
-                  {link.monoNum}
-                </span>
                 <span>{link.label}</span>
                 {isActive && (
                   <span className="w-1 h-1 bg-vermilion inline-block rounded-none ml-1" />
@@ -101,7 +81,7 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Controls Right */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3 ml-auto md:ml-0">
           {/* Command Palette Trigger */}
           <button
             type="button"
@@ -154,7 +134,6 @@ export const Header: React.FC<HeaderProps> = ({
               className="flex items-center justify-between py-2 text-xs font-mono tracking-mono uppercase text-secondary hover:text-vermilion border-b border-hairline/40 last:border-b-0"
             >
               <span>{link.label}</span>
-              <span className="text-muted text-[10px]">{link.monoNum} //</span>
             </a>
           ))}
           <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-muted">

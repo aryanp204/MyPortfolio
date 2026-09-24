@@ -111,7 +111,7 @@ export const Hero: React.FC = () => {
             <div className="flex flex-wrap items-center gap-6 pt-2">
               <a
                 href={profile.resumeUrl}
-                download="AryanPatel_Resume.docx"
+                download="Aryan_Patel_Resume.docx"
                 className="inline-flex items-center space-x-2.5 px-6 py-3 bg-primary text-canvas font-mono text-xs font-semibold uppercase tracking-mono hover:bg-vermilion hover:text-white transition-all focus:outline-none"
               >
                 <FileText className="w-3.5 h-3.5" />

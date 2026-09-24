@@ -73,7 +73,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     onClose();
     const link = document.createElement('a');
     link.href = profile.resumeUrl;
-    link.download = 'AryanPatel_Resume.docx';
+    link.download = 'Aryan_Patel_Resume.docx';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -84,7 +84,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     {
       id: 'nav-home',
       category: 'Navigation',
-      title: '00 // Jump to Home',
+      title: 'Jump to Home',
       subtitle: 'Hero, introduction and operator spec',
       icon: <ArrowRight className="w-3.5 h-3.5" />,
       action: () => scrollToSection('hero'),
@@ -92,7 +92,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     {
       id: 'nav-about',
       category: 'Navigation',
-      title: '01 // Jump to About',
+      title: 'Jump to About',
       subtitle: 'Methodology, competencies and technical toolbox',
       icon: <ArrowRight className="w-3.5 h-3.5" />,
       action: () => scrollToSection('about'),
@@ -100,7 +100,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     {
       id: 'nav-work',
       category: 'Navigation',
-      title: '02 // Jump to Work',
+      title: 'Jump to Work',
       subtitle: 'Production releases and deployments index',
       icon: <ArrowRight className="w-3.5 h-3.5" />,
       action: () => scrollToSection('work'),
@@ -108,7 +108,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     {
       id: 'nav-contact',
       category: 'Navigation',
-      title: '03 // Jump to Contact',
+      title: 'Jump to Contact',
       subtitle: 'Direct channels and transmission form',
       icon: <ArrowRight className="w-3.5 h-3.5" />,
       action: () => scrollToSection('contact'),

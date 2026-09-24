@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 export const Experience: React.FC = () => {
   // Track expanded state for each experience entry
   const [expandedIds, setExpandedIds] = useState<Record<string, boolean>>({
+    'exp-elearning-dev': false,
     'exp-qa-analyst': false,
     'exp-tech-support': false,
   });
@@ -115,7 +116,7 @@ export const Experience: React.FC = () => {
                         aria-expanded={isExpanded}
                         aria-label={`${isExpanded ? 'Collapse' : 'Expand'} details for ${exp.role}`}
                       >
-                        <span>{isExpanded ? '[-] COLLAPSE' : '[+] EXPAND (4)'}</span>
+                        <span>{isExpanded ? '[-] COLLAPSE' : `[+] EXPAND (${exp.bullets.length})`}</span>
                         <ChevronDown
                           className={`w-3.5 h-3.5 transition-transform duration-200 ${
                             isExpanded ? 'rotate-180' : ''
