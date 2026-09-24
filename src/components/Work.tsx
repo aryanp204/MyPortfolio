@@ -114,25 +114,45 @@ export const Work: React.FC<WorkProps> = ({ onOpenCaseStudy }) => {
 
               {hoveredProject && (
                 <div className="space-y-4">
-                  {/* Clean typographic blueprint placeholder */}
-                  <div className="aspect-[16/10] bg-canvas border border-hairline flex flex-col justify-between p-4 relative overflow-hidden">
-                    <div className="flex items-center justify-between font-mono text-[10px] text-muted">
-                      <span>DEPLOYMENT: GITHUB PAGES</span>
-                      <span className="text-vermilion">STATUS: 200 OK</span>
-                    </div>
+                  {/* Visual Preview / Blueprint Panel */}
+                  <div className="aspect-[16/10] bg-canvas border border-hairline flex flex-col justify-between relative overflow-hidden group/img">
+                    {hoveredProject.id === 'proj-uship' ? (
+                      <>
+                        <img
+                          src="./images/home-uship.png"
+                          alt="Uship E-Commerce Interface Preview"
+                          className="absolute inset-0 w-full h-full object-cover object-top contrast-[1.05] grayscale group-hover/img:grayscale-0 transition-all duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-canvas via-canvas/20 to-transparent pointer-events-none" />
+                        <div className="relative z-10 p-3 flex items-center justify-between font-mono text-[10px] text-primary bg-canvas/80 border-b border-hairline/60">
+                          <span className="font-semibold text-vermilion">LIVE PRODUCTION PREVIEW</span>
+                          <span>200 OK</span>
+                        </div>
+                        <div className="relative z-10 p-3 font-mono text-[10px] text-muted truncate bg-canvas/80 border-t border-hairline/60">
+                          {hoveredProject.url}
+                        </div>
+                      </>
+                    ) : (
+                      <div className="p-4 flex flex-col justify-between h-full">
+                        <div className="flex items-center justify-between font-mono text-[10px] text-muted">
+                          <span>DEPLOYMENT: GITHUB PAGES</span>
+                          <span className="text-vermilion">STATUS: 200 OK</span>
+                        </div>
 
-                    <div className="my-auto text-center space-y-1">
-                      <div className="font-mono text-xs text-secondary tracking-mono uppercase">
-                        [{hoveredProject.category}]
-                      </div>
-                      <div className="text-2xl font-semibold tracking-tighter text-primary">
-                        {hoveredProject.name}
-                      </div>
-                    </div>
+                        <div className="my-auto text-center space-y-1">
+                          <div className="font-mono text-xs text-secondary tracking-mono uppercase">
+                            [{hoveredProject.category}]
+                          </div>
+                          <div className="text-2xl font-semibold tracking-tighter text-primary">
+                            {hoveredProject.name}
+                          </div>
+                        </div>
 
-                    <div className="font-mono text-[10px] text-muted truncate border-t border-hairline/60 pt-2">
-                      {hoveredProject.url}
-                    </div>
+                        <div className="font-mono text-[10px] text-muted truncate border-t border-hairline/60 pt-2">
+                          {hoveredProject.url}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   <div className="space-y-2 pt-2">

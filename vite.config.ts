@@ -27,7 +27,7 @@ export default defineConfig({
     port: 3000,
     open: false,
     watch: {
-      ignored: ['**/*.docx', '**/*.tmp', '**/~$*'],
+      ignored: ['**/*.docx', '**/*.tmp', '**/~$*', '**/images/**', '**/public/**'],
     },
   },
 });

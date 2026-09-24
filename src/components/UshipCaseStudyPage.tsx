@@ -496,6 +496,80 @@ export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
                   </div>
                 </div>
               </div>
+
+              {/* Actual UI Screenshots Gallery */}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between pb-2 border-b border-hairline font-mono text-[11px] text-muted uppercase tracking-mono">
+                  <span>FIG. 05 // PRODUCTION UI SPECIFICATION GALLERY</span>
+                  <span>4 SCREENS</span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Screen 1: Home */}
+                  <div className="border border-hairline bg-surface p-2 space-y-2">
+                    <div className="aspect-[16/10] overflow-hidden bg-surface-subtle border border-hairline">
+                      <img
+                        src="./images/home-uship.png"
+                        alt="Uship Homepage Interface"
+                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="px-1 flex items-center justify-between font-mono text-[10px] text-muted uppercase">
+                      <span>FIG. 05A // HOMEPAGE &amp; DISCOVERY</span>
+                      <span className="text-vermilion">DESKTOP VIEW</span>
+                    </div>
+                  </div>
+
+                  {/* Screen 2: Product */}
+                  <div className="border border-hairline bg-surface p-2 space-y-2">
+                    <div className="aspect-[16/10] overflow-hidden bg-surface-subtle border border-hairline">
+                      <img
+                        src="./images/product-uship.png"
+                        alt="Uship Product Catalog Interface"
+                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="px-1 flex items-center justify-between font-mono text-[10px] text-muted uppercase">
+                      <span>FIG. 05B // PRODUCT CATALOG VIEW</span>
+                      <span className="text-vermilion">SPEC DETAIL</span>
+                    </div>
+                  </div>
+
+                  {/* Screen 3: Login */}
+                  <div className="border border-hairline bg-surface p-2 space-y-2">
+                    <div className="aspect-[16/10] overflow-hidden bg-surface-subtle border border-hairline">
+                      <img
+                        src="./images/login-uship.png"
+                        alt="Uship User Login Screen"
+                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="px-1 flex items-center justify-between font-mono text-[10px] text-muted uppercase">
+                      <span>FIG. 05C // AUTHENTICATION: LOGIN</span>
+                      <span className="text-vermilion">USER FLOW</span>
+                    </div>
+                  </div>
+
+                  {/* Screen 4: Register */}
+                  <div className="border border-hairline bg-surface p-2 space-y-2">
+                    <div className="aspect-[16/10] overflow-hidden bg-surface-subtle border border-hairline">
+                      <img
+                        src="./images/register-uship.png"
+                        alt="Uship User Registration Screen"
+                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="px-1 flex items-center justify-between font-mono text-[10px] text-muted uppercase">
+                      <span>FIG. 05D // REGISTRATION WORKFLOW</span>
+                      <span className="text-vermilion">ONBOARDING</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </section>
           )}
 
