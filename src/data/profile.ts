@@ -42,8 +42,8 @@ export const profile: ProfileData = {
   bio: "I am an IT professional skilled in Java, JavaScript, Python, C# and C++, with strong knowledge of HTML, CSS, Bootstrap, jQuery and Node.js. My expertise extends to MySQL and MongoDB, and to tools like Figma, Adobe Photoshop and GitHub. I also have hands-on experience in quality assurance, automation testing and process optimization, contributing to efficient, high-quality software development.",
   aboutIntro: "Hello there, I'm Aryan Patel, an enthusiastic IT Professional specializing in Web Development and Quality Assurance, committed to delivering seamless, high-quality digital solutions through robust design and meticulous testing.",
   status: "Open to work",
-  location: "Gandhinagar, Gujarat",
-  coordinates: "23.2156° N, 72.6369° E",
+  location: "Waterloo, Ontario",
+  coordinates: "43.4643° N, 80.5204° W",
   email: "aryanp204@gmail.com",
   resumeUrl: "./AryanPatel_Resume.docx",
   socials: {

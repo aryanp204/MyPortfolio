@@ -77,7 +77,7 @@ export const Hero: React.FC = () => {
         <div className="mb-6">
           <h1
             ref={nameRef}
-            className="text-[clamp(3.2rem,8.5vw,7.5rem)] font-semibold leading-[0.95] tracking-tighter text-primary uppercase select-none"
+            className="text-[clamp(2.6rem,8.5vw,7.5rem)] font-semibold leading-[0.95] tracking-tighter text-primary uppercase select-none"
           >
             {profile.name}
           </h1>

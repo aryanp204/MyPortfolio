@@ -133,7 +133,7 @@ export const Contact: React.FC = () => {
               </div>
 
               <div className="pt-2 flex items-center justify-between font-mono text-[10px] text-muted border-t border-hairline/60">
-                <span>LOCATION: GANDHINAGAR, GUJARAT</span>
+                <span>LOCATION: {profile.location.toUpperCase()}</span>
                 <span>TYPICAL RESPONSE: &lt; 24H</span>
               </div>
             </div>

@@ -42,14 +42,14 @@ export const Work: React.FC<WorkProps> = ({ onOpenCaseStudy }) => {
                     isHovered ? 'bg-surface/50 border-l-2 border-l-vermilion pl-4' : 'hover:bg-surface/30'
                   }`}
                 >
-                  <div className="flex items-start justify-between gap-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
                     {/* Index & Name */}
-                    <div className="flex items-baseline space-x-4">
+                    <div className="flex items-baseline space-x-3 sm:space-x-4">
                       <span className="font-mono text-xs text-muted tabular-nums">
                         {project.index}
                       </span>
                       <div>
-                        <div className="flex items-center space-x-3">
+                        <div className="flex flex-wrap items-center gap-2">
                           <a
                             href={project.url}
                             target="_blank"
@@ -69,7 +69,7 @@ export const Work: React.FC<WorkProps> = ({ onOpenCaseStudy }) => {
                     </div>
 
                     {/* Action Buttons: Case Study + Redirection */}
-                    <div className="flex-shrink-0 pt-1 flex items-center space-x-2">
+                    <div className="flex-shrink-0 flex items-center space-x-2 pl-6 sm:pl-0 sm:pt-1">
                       {project.hasCaseStudy && (
                         <button
                           type="button"
