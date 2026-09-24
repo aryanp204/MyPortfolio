@@ -10,6 +10,8 @@ import {
   ChevronLeft,
   Layers,
   List,
+  Maximize2,
+  X,
 } from 'lucide-react';
 
 interface UshipCaseStudyPageProps {
@@ -35,6 +37,89 @@ const TABS: TabDef[] = [
   { id: 'reflection', num: '07', shortLabel: 'Reflection', fullLabel: 'Reflection & Brief' },
 ];
 
+interface WireframeScreen {
+  id: string;
+  fig: string;
+  title: string;
+  badge: string;
+  src: string;
+  alt: string;
+  dimensions: string;
+  description: string;
+  highlights: string[];
+}
+
+const WIREFRAME_SCREENS: WireframeScreen[] = [
+  {
+    id: 'wf-home',
+    fig: 'FIG. 04A',
+    title: 'Storefront Homepage & Product Discovery Wireframe',
+    badge: 'HOMEPAGE // DISCOVERY',
+    src: './images/home-uship.png',
+    alt: 'Uship Homepage Wireframe & Discovery Layout',
+    dimensions: '2160 × 2535 PX',
+    description:
+      'High-fidelity wireframe establishing primary navigation landmarks, persistent global search, prominent promotional hero container, 4-column quick-category tiles, and dynamic product showcase grid with direct cart action triggers.',
+    highlights: [
+      'Sticky header with high-contrast global search bar',
+      'Hero promotional spotlight with direct "Shop Now" callout',
+      '4-column categorical discovery quadrants (Tech, Apparel, Living, Essentials)',
+      'Fluid responsive product grid with instant cart action buttons',
+    ],
+  },
+  {
+    id: 'wf-product',
+    fig: 'FIG. 04B',
+    title: 'Product Catalog Grid & Filtered Navigation Spec',
+    badge: 'CATALOG // PRODUCT FEED',
+    src: './images/product-uship.png',
+    alt: 'Uship Product Catalog and Grid Interface Wireframe',
+    dimensions: '2160 × 1815 PX',
+    description:
+      'Structured catalog layout optimizing browsing efficiency. Standardized aspect-ratio card containers with consistent pricing hierarchy, badges, and quick-add actions designed to reduce friction during multi-item inspection.',
+    highlights: [
+      'Standardized product card geometry & visual rhythm',
+      'High-legibility pricing typography and discount tags',
+      'Zero-latency add-to-cart and item inspection interactions',
+      'Strict 24px grid gutter alignment preventing visual drift',
+    ],
+  },
+  {
+    id: 'wf-login',
+    fig: 'FIG. 04C',
+    title: 'User Authentication & Account Sign-In Flow',
+    badge: 'AUTH // SIGN-IN',
+    src: './images/login-uship.png',
+    alt: 'Uship User Authentication Login Wireframe',
+    dimensions: '2160 × 1455 PX',
+    description:
+      'Focused authentication modal/view designed to reduce checkout drop-off. Minimalist form fields with immediate client-side validation cues, password visibility toggle, and rapid recovery shortcuts.',
+    highlights: [
+      'Focused single-purpose card container with high contrast ratios',
+      'Real-time field validation cues and accessible form labels',
+      'Password visibility toggle and swift password recovery shortcuts',
+      'Direct toggle pathway for new user registration',
+    ],
+  },
+  {
+    id: 'wf-register',
+    fig: 'FIG. 04D',
+    title: 'Onboarding & Customer Registration Wireframe',
+    badge: 'AUTH // ONBOARDING',
+    src: './images/register-uship.png',
+    alt: 'Uship Customer Registration Form Wireframe',
+    dimensions: '2160 × 1695 PX',
+    description:
+      'Clean onboarding architecture gathering essential customer data without cognitive fatigue. Streamlined input progression ensuring rapid progression to shopping within seconds.',
+    highlights: [
+      'Low-friction onboarding layout with clear helper text',
+      'Accessible input labels with native keyboard support',
+      'Explicit terms of service and privacy guarantees',
+      'One-click transition to authenticated shopping state',
+    ],
+  },
+];
+
 export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
   onBack,
   theme,
@@ -42,11 +127,31 @@ export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<string>('overview');
   const [viewMode, setViewMode] = useState<'tabs' | 'all'>('tabs');
+  const [activeWireframeIdx, setActiveWireframeIdx] = useState<number | null>(null);
   const contentTopRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (activeWireframeIdx === null) return;
+      if (e.key === 'Escape') {
+        setActiveWireframeIdx(null);
+      } else if (e.key === 'ArrowLeft') {
+        setActiveWireframeIdx((prev) =>
+          prev !== null ? (prev > 0 ? prev - 1 : WIREFRAME_SCREENS.length - 1) : null
+        );
+      } else if (e.key === 'ArrowRight') {
+        setActiveWireframeIdx((prev) =>
+          prev !== null ? (prev < WIREFRAME_SCREENS.length - 1 ? prev + 1 : 0) : null
+        );
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeWireframeIdx]);
 
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
@@ -442,7 +547,7 @@ export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
               <div className="flex items-center space-x-3 pb-3 border-b border-hairline font-mono text-xs">
                 <span className="text-vermilion font-bold">04 //</span>
                 <span className="text-primary font-semibold tracking-mono uppercase">
-                  PROTOTYPING & STRUCTURAL BLUEPRINT
+                  PROTOTYPING &amp; WIREFRAME SPECIFICATIONS
                 </span>
               </div>
 
@@ -497,77 +602,100 @@ export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
                 </div>
               </div>
 
-              {/* Actual UI Screenshots Gallery */}
-              <div className="space-y-4">
-                <div className="flex items-center justify-between pb-2 border-b border-hairline font-mono text-[11px] text-muted uppercase tracking-mono">
-                  <span>FIG. 05 // PRODUCTION UI SPECIFICATION GALLERY</span>
-                  <span>4 SCREENS</span>
+              {/* Wireframe Prototyping Showcase */}
+              <div className="space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-hairline font-mono text-xs gap-2">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-vermilion font-bold">FIG. 04 //</span>
+                    <span className="text-primary font-semibold tracking-mono uppercase">
+                      WIREFRAME PROTOTYPES &amp; UI SPECIFICATIONS
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-muted text-[11px]">
+                    <span>4 HIGH-RES WIREFRAMES</span>
+                    <span>·</span>
+                    <span className="text-vermilion font-medium">[ CLICK ANY SCREEN TO INSPECT SPEC ]</span>
+                  </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Screen 1: Home */}
-                  <div className="border border-hairline bg-surface p-2 space-y-2">
-                    <div className="aspect-[16/10] overflow-hidden bg-surface-subtle border border-hairline">
-                      <img
-                        src="./images/home-uship.png"
-                        alt="Uship Homepage Interface"
-                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="px-1 flex items-center justify-between font-mono text-[10px] text-muted uppercase">
-                      <span>FIG. 05A // HOMEPAGE &amp; DISCOVERY</span>
-                      <span className="text-vermilion">DESKTOP VIEW</span>
-                    </div>
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {WIREFRAME_SCREENS.map((screen, idx) => (
+                    <div
+                      key={screen.id}
+                      onClick={() => setActiveWireframeIdx(idx)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          setActiveWireframeIdx(idx);
+                        }
+                      }}
+                      tabIndex={0}
+                      role="button"
+                      aria-label={`Inspect ${screen.title} wireframe specification`}
+                      className="group border border-hairline hover:border-vermilion bg-surface/30 hover:bg-surface/50 transition-all p-4 space-y-4 cursor-pointer relative text-left focus:outline-none focus:ring-1 focus:ring-vermilion"
+                    >
+                      {/* Top Spec Card Bar */}
+                      <div className="flex items-center justify-between font-mono text-[11px] pb-2 border-b border-hairline">
+                        <div className="flex items-center space-x-2">
+                          <span className="text-vermilion font-bold">{screen.fig}</span>
+                          <span className="text-muted">//</span>
+                          <span className="text-primary font-medium uppercase tracking-mono">
+                            {screen.badge}
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-muted px-1.5 py-0.5 border border-hairline bg-canvas">
+                          {screen.dimensions}
+                        </span>
+                      </div>
 
-                  {/* Screen 2: Product */}
-                  <div className="border border-hairline bg-surface p-2 space-y-2">
-                    <div className="aspect-[16/10] overflow-hidden bg-surface-subtle border border-hairline">
-                      <img
-                        src="./images/product-uship.png"
-                        alt="Uship Product Catalog Interface"
-                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="px-1 flex items-center justify-between font-mono text-[10px] text-muted uppercase">
-                      <span>FIG. 05B // PRODUCT CATALOG VIEW</span>
-                      <span className="text-vermilion">SPEC DETAIL</span>
-                    </div>
-                  </div>
+                      {/* Image Thumbnail with Overlay Zoom Hint */}
+                      <div className="aspect-[16/10] overflow-hidden bg-surface-subtle border border-hairline relative">
+                        <img
+                          src={screen.src}
+                          alt={screen.alt}
+                          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                          loading="lazy"
+                        />
+                        {/* Hover Overlay */}
+                        <div className="absolute inset-0 bg-canvas/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
+                          <div className="px-3 py-1.5 bg-canvas/90 border border-vermilion text-vermilion font-mono text-xs flex items-center space-x-2 shadow-lg">
+                            <Maximize2 className="w-3.5 h-3.5" />
+                            <span className="font-semibold tracking-mono">INSPECT SPEC</span>
+                          </div>
+                        </div>
+                      </div>
 
-                  {/* Screen 3: Login */}
-                  <div className="border border-hairline bg-surface p-2 space-y-2">
-                    <div className="aspect-[16/10] overflow-hidden bg-surface-subtle border border-hairline">
-                      <img
-                        src="./images/login-uship.png"
-                        alt="Uship User Login Screen"
-                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="px-1 flex items-center justify-between font-mono text-[10px] text-muted uppercase">
-                      <span>FIG. 05C // AUTHENTICATION: LOGIN</span>
-                      <span className="text-vermilion">USER FLOW</span>
-                    </div>
-                  </div>
+                      {/* Text & Specification Breakdown */}
+                      <div className="space-y-2.5">
+                        <div className="flex items-start justify-between gap-2">
+                          <h4 className="text-sm font-semibold text-primary group-hover:text-vermilion transition-colors">
+                            {screen.title}
+                          </h4>
+                          <span className="text-muted group-hover:text-vermilion transition-colors flex-shrink-0 pt-0.5">
+                            <Maximize2 className="w-3.5 h-3.5" />
+                          </span>
+                        </div>
 
-                  {/* Screen 4: Register */}
-                  <div className="border border-hairline bg-surface p-2 space-y-2">
-                    <div className="aspect-[16/10] overflow-hidden bg-surface-subtle border border-hairline">
-                      <img
-                        src="./images/register-uship.png"
-                        alt="Uship User Registration Screen"
-                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
+                        <p className="text-xs text-secondary leading-relaxed">
+                          {screen.description}
+                        </p>
+
+                        <div className="pt-2 border-t border-hairline/60">
+                          <div className="text-[10px] font-mono text-muted uppercase mb-1.5">
+                            Key Wireframe Specifications:
+                          </div>
+                          <ul className="space-y-1 text-xs font-mono text-secondary">
+                            {screen.highlights.map((h, hi) => (
+                              <li key={hi} className="flex items-start space-x-2">
+                                <span className="text-vermilion font-bold">›</span>
+                                <span className="text-primary">{h}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
                     </div>
-                    <div className="px-1 flex items-center justify-between font-mono text-[10px] text-muted uppercase">
-                      <span>FIG. 05D // REGISTRATION WORKFLOW</span>
-                      <span className="text-vermilion">ONBOARDING</span>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </section>
@@ -794,6 +922,136 @@ export const UshipCaseStudyPage: React.FC<UshipCaseStudyPageProps> = ({
           </div>
         </section>
       </div>
+
+      {/* Full-Screen Wireframe Spec Lightbox Modal */}
+      {activeWireframeIdx !== null && WIREFRAME_SCREENS[activeWireframeIdx] && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={WIREFRAME_SCREENS[activeWireframeIdx].title}
+          className="fixed inset-0 z-50 bg-canvas/95 backdrop-blur-md flex flex-col justify-between overflow-hidden animate-in fade-in duration-200"
+          onClick={() => setActiveWireframeIdx(null)}
+        >
+          {/* Lightbox Top Header Bar */}
+          <div
+            className="w-full bg-surface/90 border-b border-hairline px-4 sm:px-8 py-3 flex items-center justify-between z-10 flex-shrink-0"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center space-x-3 font-mono text-xs">
+              <span className="text-vermilion font-bold">
+                {WIREFRAME_SCREENS[activeWireframeIdx].fig}
+              </span>
+              <span className="text-muted hidden sm:inline">//</span>
+              <span className="text-primary font-semibold truncate max-w-[240px] sm:max-w-md">
+                {WIREFRAME_SCREENS[activeWireframeIdx].title}
+              </span>
+              <span className="hidden md:inline px-2 py-0.5 text-[10px] bg-canvas border border-hairline text-secondary">
+                {WIREFRAME_SCREENS[activeWireframeIdx].dimensions}
+              </span>
+            </div>
+
+            <div className="flex items-center space-x-3">
+              <span className="hidden sm:inline font-mono text-[11px] text-muted">
+                {activeWireframeIdx + 1} / {WIREFRAME_SCREENS.length} · [ESC TO CLOSE]
+              </span>
+              <button
+                type="button"
+                onClick={() => setActiveWireframeIdx(null)}
+                className="p-1.5 border border-hairline hover:border-vermilion text-secondary hover:text-primary transition-colors flex items-center space-x-1 font-mono text-xs"
+                title="Close modal (Esc)"
+              >
+                <X className="w-4 h-4 text-vermilion" />
+                <span className="hidden sm:inline">CLOSE</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Lightbox Viewport with Side Navigation */}
+          <div
+            className="flex-1 relative flex items-center justify-center p-3 sm:p-6 overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Previous Screen Button */}
+            <button
+              type="button"
+              onClick={() =>
+                setActiveWireframeIdx(
+                  activeWireframeIdx > 0 ? activeWireframeIdx - 1 : WIREFRAME_SCREENS.length - 1
+                )
+              }
+              className="absolute left-2 sm:left-6 z-20 p-2 sm:p-3 bg-surface/80 border border-hairline hover:border-vermilion text-primary hover:text-vermilion transition-all backdrop-blur-sm shadow-lg"
+              title="Previous Wireframe (Left Arrow)"
+              aria-label="Previous Wireframe"
+            >
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+
+            {/* Main Image Container */}
+            <div className="max-h-[66vh] sm:max-h-[72vh] max-w-full overflow-auto border border-hairline bg-surface-subtle shadow-2xl p-1 sm:p-2 flex items-center justify-center">
+              <img
+                src={WIREFRAME_SCREENS[activeWireframeIdx].src}
+                alt={WIREFRAME_SCREENS[activeWireframeIdx].alt}
+                className="max-h-[62vh] sm:max-h-[68vh] w-auto object-contain select-none"
+              />
+            </div>
+
+            {/* Next Screen Button */}
+            <button
+              type="button"
+              onClick={() =>
+                setActiveWireframeIdx(
+                  activeWireframeIdx < WIREFRAME_SCREENS.length - 1 ? activeWireframeIdx + 1 : 0
+                )
+              }
+              className="absolute right-2 sm:right-6 z-20 p-2 sm:p-3 bg-surface/80 border border-hairline hover:border-vermilion text-primary hover:text-vermilion transition-all backdrop-blur-sm shadow-lg"
+              title="Next Wireframe (Right Arrow)"
+              aria-label="Next Wireframe"
+            >
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+          </div>
+
+          {/* Lightbox Bottom Spec Bar */}
+          <div
+            className="w-full bg-surface/95 border-t border-hairline px-4 sm:px-8 py-3.5 z-10 flex-shrink-0"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="max-w-spec mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-mono text-xs">
+              <div className="space-y-1 max-w-3xl">
+                <div className="flex items-center space-x-2">
+                  <span className="text-vermilion font-bold text-[11px] uppercase tracking-mono">
+                    [{WIREFRAME_SCREENS[activeWireframeIdx].badge}]
+                  </span>
+                  <span className="text-primary font-medium">
+                    {WIREFRAME_SCREENS[activeWireframeIdx].title}
+                  </span>
+                </div>
+                <p className="text-[11px] text-secondary leading-relaxed line-clamp-2 md:line-clamp-none">
+                  {WIREFRAME_SCREENS[activeWireframeIdx].description}
+                </p>
+              </div>
+
+              {/* Wireframe thumbnail selector */}
+              <div className="flex items-center space-x-2 flex-shrink-0 self-end md:self-auto">
+                {WIREFRAME_SCREENS.map((wf, idx) => (
+                  <button
+                    key={wf.id}
+                    type="button"
+                    onClick={() => setActiveWireframeIdx(idx)}
+                    className={`px-2 py-1 text-[10px] font-mono border transition-all ${
+                      idx === activeWireframeIdx
+                        ? 'border-vermilion bg-vermilion/10 text-vermilion font-semibold'
+                        : 'border-hairline text-muted hover:text-primary hover:border-hairline-bright bg-surface/40'
+                    }`}
+                  >
+                    0{idx + 1}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
